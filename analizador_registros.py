@@ -36,3 +36,6 @@ def analizar_registro_resumido(archivo_registro, palabra_clave):
                 # Contar la palabra clave
                 if palabra_clave.lower() in linea_lower:
                     conteo_palabra_clave += 1
+                    
+                except FileNotFoundError:
+        return "Error: Archivo no encontrado."
