@@ -16,3 +16,15 @@ def analizar_registro_resumido(archivo_registro, palabra_clave):
     tipos_registros = {"INFO": 0, "WARNING": 0, "ERROR": 0}
     ips_unicas = set()
     conteo_palabra_clave = 0
+
+    try:
+        with open(archivo_registro, 'r') as archivo:
+            for linea in archivo:
+                total_registros += 1
+                linea_lower = linea.lower() #Para no repetir la operacion
+
+                # Contar registros por tipo
+                for tipo in tipos_registros:
+                    if tipo.lower() in linea_lower:
+                        tipos_registros[tipo] += 1
+                        break #Evitar contar un registro en varios tipos
