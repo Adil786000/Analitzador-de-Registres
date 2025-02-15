@@ -39,3 +39,30 @@ def analizar_registro_resumido(archivo_registro, palabra_clave):
                     
                 except FileNotFoundError:
         return "Error: Archivo no encontrado."
+        # Crear el informe
+    informe = (
+        "Informe d'Anàlisi de Fitxer de Registre\n"
+        "---------------------------------------\n"
+        f"Nombre total de registres: {total_registros}\n"
+        "Registres per tipus:\n"
+        f"\tINFO: {tipos_registros['INFO']}\n"
+        f"\tWARNING: {tipos_registros['WARNING']}\n"
+        f"\tERROR: {tipos_registros['ERROR']}\n"
+        "Adreces IP úniques detectades:\n"
+        f"\t{chr(10).join(ips_unicas)}\n"
+        f"Recurrence de la paraula clau '{palabra_clave}':
+        {conteo_palabra_clave}\n"
+        "---------------------------------------"
+    )
+
+    return informe
+
+        # Ejemplo de uso:
+        archivo_registro = "register.log"
+        palabra_clave = "error"
+        informe = analizar_registro_resumido(archivo_registro, palabra_clave)
+        print(informe)
+
+        # Guardar el informe (opcional):
+        with open("informe.txt", "w") as f:
+            f.write(informe) 
