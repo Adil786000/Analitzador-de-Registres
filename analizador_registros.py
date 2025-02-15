@@ -28,3 +28,11 @@ def analizar_registro_resumido(archivo_registro, palabra_clave):
                     if tipo.lower() in linea_lower:
                         tipos_registros[tipo] += 1
                         break #Evitar contar un registro en varios tipos
+# Identificar IPs (más robusto)
+                ip = re.search(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}', linea)
+                if ip:
+                    ips_unicas.add(ip.group(0))
+
+                # Contar la palabra clave
+                if palabra_clave.lower() in linea_lower:
+                    conteo_palabra_clave += 1
