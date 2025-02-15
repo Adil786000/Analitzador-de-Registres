@@ -12,3 +12,7 @@ def analizar_registro_resumido(archivo_registro, palabra_clave):
     Returns:
         str: Informe con el análisis.
          """
+    total_registros = 0
+    tipos_registros = {"INFO": 0, "WARNING": 0, "ERROR": 0}
+    ips_unicas = set()
+    conteo_palabra_clave = 0
